@@ -1,0 +1,6 @@
+[2025-10-16T14:15:54.630005+00:00] user: what is my name?
+[2025-10-16T14:15:55.678086+00:00] assistant: Installed google-generativeai version doesn't expose text.generate or chat.completions APIs.
+[2025-10-16T14:17:42.569328+00:00] user: "C:/Users/venen alex/OneDrive/Desktop/Chroma_chatbot/venv/Scripts/python.exe" "c:/Users/venen alex/OneDrive/Desktop/Chroma_chatbot/c.py"
+[2025-10-16T14:17:43.203290+00:00] assistant: Installed google-generativeai version doesn't expose text.generate or chat.completions APIs.
+[2025-10-16T14:17:55.167986+00:00] user: hello
+[2025-10-16T14:17:55.222628+00:00] assistant: Installed google-generativeai version doesn't expose text.generate or chat.completions APIs.
