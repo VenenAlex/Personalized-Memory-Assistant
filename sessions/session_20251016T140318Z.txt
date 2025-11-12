@@ -1,2 +1,0 @@
-[2025-10-16T14:03:49.107232+00:00] user: Hello my name is Venen Alex
-[2025-10-16T14:03:50.673912+00:00] assistant: Installed google-generativeai version doesn't expose text.generate or chat.completions APIs.

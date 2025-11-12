@@ -1,9 +1,0 @@
-[2025-10-17T06:20:08.438422+00:00] user: helloo, It's Me, Venen Alex . How are you?
-[2025-10-17T06:20:11.270482+00:00] assistant: Hello Venen Alex, I'm doing well.
-
-[2025-10-17T06:20:48.956732+00:00] user: Give the names of the major project members
-[2025-10-17T06:20:51.188023+00:00] assistant: You, Sridhar S, Sudhanva BP, and Srujan KA.
-
-[2025-10-17T06:21:01.409287+00:00] user: who is you?
-[2025-10-17T06:21:03.470237+00:00] assistant: I don't know who you are.
-
