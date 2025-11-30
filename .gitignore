@@ -1,0 +1,7 @@
+# .gitignore
+chroma_db/
+sessions/
+.env
+__pycache__/
+*.sqlite3
+*.pyc
