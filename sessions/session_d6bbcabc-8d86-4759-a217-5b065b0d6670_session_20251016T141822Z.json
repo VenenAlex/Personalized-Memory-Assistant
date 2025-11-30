@@ -1,0 +1,47 @@
+{
+  "session_id": "d6bbcabc-8d86-4759-a217-5b065b0d6670",
+  "title": "Hi",
+  "created_at": "2025-11-30T06:54:04.716402+00:00",
+  "messages": [
+    {
+      "role": "user",
+      "content": "hi",
+      "timestamp": "2025-10-16T14:18:43.596134+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Hi.",
+      "timestamp": "2025-10-16T14:18:46.189172+00:00"
+    },
+    {
+      "role": "user",
+      "content": "what is my name?",
+      "timestamp": "2025-10-16T14:18:55.150663+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Your name is Venen Alex.",
+      "timestamp": "2025-10-16T14:18:56.582412+00:00"
+    },
+    {
+      "role": "user",
+      "content": "my favourite colour is Blue",
+      "timestamp": "2025-10-16T14:19:27.081027+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Your favorite color is Blue.",
+      "timestamp": "2025-10-16T14:19:28.000393+00:00"
+    },
+    {
+      "role": "user",
+      "content": "my Favourite Footballer is Lionel Messi. I have my project review on 17 Oct 2025",
+      "timestamp": "2025-10-16T14:20:11.349561+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Okay, your favorite footballer is Lionel Messi and your project review is on October 17, 2025.",
+      "timestamp": "2025-10-16T14:20:14.776125+00:00"
+    }
+  ]
+}

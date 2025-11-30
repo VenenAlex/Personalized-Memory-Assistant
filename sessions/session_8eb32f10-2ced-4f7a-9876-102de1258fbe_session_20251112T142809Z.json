@@ -1,0 +1,27 @@
+{
+  "session_id": "8eb32f10-2ced-4f7a-9876-102de1258fbe",
+  "title": "Summarize: https://youtu.be/pnmypcdfaq4?si=hyne14g",
+  "created_at": "2025-11-30T06:54:04.736369+00:00",
+  "messages": [
+    {
+      "role": "user",
+      "content": "summarize: https://youtu.be/PnmyPCDfaQ4?si=hYNe14GiVD9tN48p",
+      "timestamp": "2025-11-12T14:28:51.526973+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Here is a summary of the video transcript in points:",
+      "timestamp": "2025-11-12T14:28:51.528063+00:00"
+    },
+    {
+      "role": "user",
+      "content": "The Above summary is about Japan-China clash over Taiwan",
+      "timestamp": "2025-11-12T14:30:39.909875+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Yes, the summary you provided is about the Japan-China clash over Taiwan, sparked by a statement from Japan's Prime Minister.",
+      "timestamp": "2025-11-12T14:30:41.222269+00:00"
+    }
+  ]
+}

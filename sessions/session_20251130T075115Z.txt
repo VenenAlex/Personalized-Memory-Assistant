@@ -1,0 +1,20 @@
+[2025-11-30T07:51:18.598850+00:00] user: hi
+[2025-11-30T07:51:19.530307+00:00] assistant: Gemini call failed: 400 API Key not found. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API Key not found. Please pass a valid API key."
+]
+[2025-11-30T07:53:18.907203+00:00] user: "C:/Users/venen alex/OneDrive/Desktop/Personalized-Memory-Assistant/venv/Scripts/python.exe" "c:/Users/venen alex/OneDrive/Desktop/Personalized-Memory-Assistant/Chatbot.py"
+[2025-11-30T07:53:19.493985+00:00] assistant: Gemini call failed: 400 API Key not found. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API Key not found. Please pass a valid API key."
+]

@@ -1,0 +1,67 @@
+{
+  "session_id": "e2013e34-5b09-4d49-bb4c-e7751e5f2e4c",
+  "title": "What is my name?",
+  "created_at": "2025-11-30T06:54:04.717942+00:00",
+  "messages": [
+    {
+      "role": "user",
+      "content": "what is my name?",
+      "timestamp": "2025-10-17T06:15:30.336417+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Your name is Venen Alex.",
+      "timestamp": "2025-10-17T06:15:34.097441+00:00"
+    },
+    {
+      "role": "user",
+      "content": "What is on my schedule on 17 Oct?",
+      "timestamp": "2025-10-17T06:15:55.170490+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Your project review is on October 17, 2025.",
+      "timestamp": "2025-10-17T06:15:57.306613+00:00"
+    },
+    {
+      "role": "user",
+      "content": "my fav footballer",
+      "timestamp": "2025-10-17T06:16:33.952379+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Your favorite footballer is Lionel Messi.",
+      "timestamp": "2025-10-17T06:16:35.804823+00:00"
+    },
+    {
+      "role": "user",
+      "content": "My project members for major project are: Me,Sridhar S, Sudhanva BP,Srujan KA",
+      "timestamp": "2025-10-17T06:17:58.252205+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Your project members are: You, Sridhar S, Sudhanva BP, and Srujan KA.",
+      "timestamp": "2025-10-17T06:18:00.500788+00:00"
+    },
+    {
+      "role": "user",
+      "content": "give the names of my project members",
+      "timestamp": "2025-10-17T06:18:24.380251+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Your project members are: You, Sridhar S, Sudhanva BP, and Srujan KA.",
+      "timestamp": "2025-10-17T06:18:26.291280+00:00"
+    },
+    {
+      "role": "user",
+      "content": "who is you?",
+      "timestamp": "2025-10-17T06:18:40.230862+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "I don't know who you are.",
+      "timestamp": "2025-10-17T06:18:42.576212+00:00"
+    }
+  ]
+}

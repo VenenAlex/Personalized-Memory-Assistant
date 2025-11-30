@@ -1,0 +1,37 @@
+{
+  "session_id": "fe24e26b-8f77-4ceb-bf1b-a1d4c59602c4",
+  "title": "What is my name?",
+  "created_at": "2025-11-30T06:54:04.704583+00:00",
+  "messages": [
+    {
+      "role": "user",
+      "content": "what is my name?",
+      "timestamp": "2025-10-16T14:15:54.630005+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Installed google-generativeai version doesn't expose text.generate or chat.completions APIs.",
+      "timestamp": "2025-10-16T14:15:55.678086+00:00"
+    },
+    {
+      "role": "user",
+      "content": "\"C:/Users/venen alex/OneDrive/Desktop/Chroma_chatbot/venv/Scripts/python.exe\" \"c:/Users/venen alex/OneDrive/Desktop/Chroma_chatbot/c.py\"",
+      "timestamp": "2025-10-16T14:17:42.569328+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Installed google-generativeai version doesn't expose text.generate or chat.completions APIs.",
+      "timestamp": "2025-10-16T14:17:43.203290+00:00"
+    },
+    {
+      "role": "user",
+      "content": "hello",
+      "timestamp": "2025-10-16T14:17:55.167986+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Installed google-generativeai version doesn't expose text.generate or chat.completions APIs.",
+      "timestamp": "2025-10-16T14:17:55.222628+00:00"
+    }
+  ]
+}

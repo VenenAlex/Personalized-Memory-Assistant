@@ -1,0 +1,37 @@
+{
+  "session_id": "6e2329cf-6f4e-4ea9-8802-809a35a761ed",
+  "title": "Helloo, its me, venen alex",
+  "created_at": "2025-11-30T06:54:04.719410+00:00",
+  "messages": [
+    {
+      "role": "user",
+      "content": "helloo, It's Me, Venen Alex . How are you?",
+      "timestamp": "2025-10-17T06:20:08.438422+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello Venen Alex, I'm doing well.",
+      "timestamp": "2025-10-17T06:20:11.270482+00:00"
+    },
+    {
+      "role": "user",
+      "content": "Give the names of the major project members",
+      "timestamp": "2025-10-17T06:20:48.956732+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "You, Sridhar S, Sudhanva BP, and Srujan KA.",
+      "timestamp": "2025-10-17T06:20:51.188023+00:00"
+    },
+    {
+      "role": "user",
+      "content": "who is you?",
+      "timestamp": "2025-10-17T06:21:01.409287+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "I don't know who you are.",
+      "timestamp": "2025-10-17T06:21:03.470237+00:00"
+    }
+  ]
+}

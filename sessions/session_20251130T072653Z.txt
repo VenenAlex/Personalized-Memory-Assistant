@@ -1,0 +1,10 @@
+[2025-11-30T07:26:57.659450+00:00] user: Hello
+[2025-11-30T07:26:59.337274+00:00] assistant: Gemini call failed: 400 API Key not found. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API Key not found. Please pass a valid API key."
+]
