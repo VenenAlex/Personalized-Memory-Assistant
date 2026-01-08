@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Mic, Youtube, Sparkles, Menu, Plus, Trash2, MessageSquare } from 'lucide-react';
+import { Send, Mic, Youtube, Sparkles, Menu, Plus, Trash2, MessageSquare, Home, Upload } from 'lucide-react';
 import axios from 'axios';
+import HomePage from './HomePage';
 import './App.css';
 
 const API_BASE = 'http://localhost:8000';
 
 export default function App() {
+  const [showHomePage, setShowHomePage] = useState(true);
   const [sessions, setSessions] = useState([]);
   const [currentSessionId, setCurrentSessionId] = useState(null);
   const [messages, setMessages] = useState([]);
@@ -14,9 +16,12 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [isListening, setIsListening] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [loadingMessage, setLoadingMessage] = useState('');
   const messagesEndRef = useRef(null);
   const messagesContainerRef = useRef(null);
   const recognitionRef = useRef(null);
+  const fileInputRef = useRef(null);
 
   // Initialize Web Speech API
   useEffect(() => {
@@ -46,17 +51,19 @@ export default function App() {
 
   // Load sessions on mount
   useEffect(() => {
-    loadSessions();
-  }, []);
+    if (!showHomePage) {
+      loadSessions();
+    }
+  }, [showHomePage]);
 
-  // Load messages when session changes
+  // Load messages when session changes - THIS WAS MISSING!
   useEffect(() => {
     if (currentSessionId) {
       loadSession(currentSessionId);
     }
   }, [currentSessionId]);
 
-  // Auto-scroll to bottom with smooth behavior
+  // Auto-scroll to bottom when messages change
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
@@ -79,7 +86,6 @@ export default function App() {
     try {
       const response = await axios.get(`${API_BASE}/api/session/${sessionId}`);
       setMessages(response.data.messages || []);
-      // Scroll to top first, then to bottom after messages load
       setTimeout(() => {
         if (messagesContainerRef.current) {
           messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
@@ -121,7 +127,6 @@ export default function App() {
 
     if (!currentSessionId) {
       await createNewSession();
-      // Wait a bit for session to be created
       await new Promise(resolve => setTimeout(resolve, 500));
     }
 
@@ -129,6 +134,7 @@ export default function App() {
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setLoading(true);
+    setLoadingMessage('Sending message...');
 
     try {
       const response = await axios.post(`${API_BASE}/api/chat`, {
@@ -138,16 +144,25 @@ export default function App() {
 
       const assistantMessage = { role: 'assistant', content: response.data.reply };
       setMessages(prev => [...prev, assistantMessage]);
-      await loadSessions(); // Refresh to get updated title
+      await loadSessions();
     } catch (error) {
       console.error('Error sending message:', error);
+
+      let errorDetail = 'Sorry, I encountered an error. Please check if the backend is running and your API key is valid.';
+      if (error.response?.data?.detail) {
+        errorDetail = `Error: ${error.response.data.detail}`;
+      } else if (error.message) {
+        errorDetail = `Error: ${error.message}`;
+      }
+
       const errorMessage = { 
         role: 'assistant', 
-        content: 'Sorry, I encountered an error. Please check if the backend is running and your API key is valid.' 
+        content: errorDetail
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
       setLoading(false);
+      setLoadingMessage('');
     }
   };
 
@@ -163,6 +178,7 @@ export default function App() {
     const userMessage = { role: 'user', content: `Summarize: ${url}` };
     setMessages(prev => [...prev, userMessage]);
     setLoading(true);
+    setLoadingMessage('Summarizing YouTube video...');
 
     try {
       const response = await axios.post(`${API_BASE}/api/summarize`, {
@@ -182,6 +198,7 @@ export default function App() {
       setMessages(prev => [...prev, errorMessage]);
     } finally {
       setLoading(false);
+      setLoadingMessage('');
     }
   };
 
@@ -192,10 +209,93 @@ export default function App() {
     }
   };
 
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    if (!currentSessionId) {
+      await createNewSession();
+      await new Promise(resolve => setTimeout(resolve, 500));
+    }
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('session_id', currentSessionId);
+
+    setLoading(true);
+    setUploadProgress(0);
+    setLoadingMessage(`Uploading ${file.name}...`);
+
+    try {
+      const response = await axios.post(`${API_BASE}/api/upload`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        },
+        onUploadProgress: (progressEvent) => {
+          const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+          setUploadProgress(percentCompleted);
+          setLoadingMessage(`Uploading... ${percentCompleted}%`);
+        }
+      });
+
+      if (response.data.success) {
+        // Add user message about file upload
+        const uploadMessage = { 
+          role: 'user', 
+          content: `Uploaded: ${file.name}` 
+        };
+        setMessages(prev => [...prev, uploadMessage]);
+
+        // Add AI response with summary
+        const aiMessage = { 
+          role: 'assistant', 
+          content: response.data.message 
+        };
+        setMessages(prev => [...prev, aiMessage]);
+        
+        await loadSessions();
+      } else {
+        // Handle error response from server
+        const errorMessage = { 
+          role: 'assistant', 
+          content: response.data.message || 'Error processing file' 
+        };
+        setMessages(prev => [...prev, errorMessage]);
+      }
+    } catch (error) {
+      console.error('Error uploading file:', error);
+      
+      let errorDetail = 'Failed to upload file. Please try again.';
+      if (error.response?.data?.detail) {
+        errorDetail = `Error: ${error.response.data.detail}`;
+      } else if (error.message) {
+        errorDetail = `Error: ${error.message}`;
+      }
+
+      const errorMessage = { 
+        role: 'assistant', 
+        content: errorDetail
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
+      setLoading(false);
+      setUploadProgress(0);
+      setLoadingMessage('');
+      // Reset file input
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     sendMessage();
   };
+
+  if (showHomePage) {
+    return <HomePage onEnterChat={() => setShowHomePage(false)} />;
+  }
 
   return (
     <div className="app">
@@ -217,6 +317,10 @@ export default function App() {
               <button className="new-chat-btn" onClick={createNewSession}>
                 <Plus size={20} />
                 New Chat
+              </button>
+              <button className="back-home-btn" onClick={() => setShowHomePage(true)}>
+                <Home size={20} />
+                Back to Home
               </button>
             </div>
 
@@ -296,6 +400,7 @@ export default function App() {
                   <span></span>
                   <span></span>
                 </div>
+                <div className="loading-message">{loadingMessage}</div>
               </div>
             </motion.div>
           )}
@@ -321,6 +426,21 @@ export default function App() {
               title="Voice Input"
             >
               <Mic size={20} />
+            </button>
+
+            <input
+              type="file"
+              ref={fileInputRef}
+              style={{ display: 'none' }}
+              onChange={handleFileUpload}
+            />
+            <button
+              type="button"
+              className="icon-btn upload-btn"
+              onClick={() => fileInputRef.current.click()}
+              title="Upload File"
+            >
+              <Upload size={20} />
             </button>
 
             <input
